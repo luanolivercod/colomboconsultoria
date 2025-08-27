@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Gustavo Colombo | Gestão em Saúde</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================================
+            Estilos CSS
+            ================================== */
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variáveis de Cores e Fontes */
+        :root {
+            --primary-color: #1F3C59;
+            --secondary-color: #A0A0A0;
+            --light-gray: #E0E0E0;
+            --accent-color: #4DB6AC;
+            --text-color: #333;
+            --merriweather: 'Merriweather', serif;
+            --roboto: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--roboto);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--merriweather);
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #388E83;
+        }
+
+        /* Header fixo */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            max-width: 150px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav ul li {
+            margin-left: 25px;
+        }
+
+        .main-nav ul li a:not(.cta-button) {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(31, 60, 89, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            color: white;
+            font-size: 3rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Seção Sobre - Resumo */
+        .about-summary-section {
+            background-color: #fff;
+        }
+        
+        .about-summary-section .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-summary-section .about-content img {
+            width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Seção de Serviços */
+        .services-section {
+            background-color: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .service-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+        }
+
+        /* Seção de Cases de Sucesso */
+        .cases-section {
+            background-color: #fff;
+        }
+
+        .case-card {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .case-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .case-card p {
+            margin-bottom: 15px;
+        }
+
+        /* Seção de Depoimentos */
+        .testimonials-section {
+            background-color: var(--light-gray);
+        }
+
+        .testimonials-slider {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            font-style: italic;
+        }
+
+        .testimonial-card cite {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        /* Seção do Blog */
+        .blog-section {
+            background-color: #fff;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-post-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-post-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-post-card h3 {
+            padding: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .blog-post-card p {
+            padding: 0 20px 20px;
+        }
+
+        .link-saiba-mais {
+            display: inline-block;
+            margin: 0 20px 20px;
+            font-weight: bold;
+        }
+
+        /* Seção de Contato */
+        .contact-section {
+            background-color: var(--light-gray);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 5px;
+            font-family: var(--roboto);
+        }
+
+        .contact-form button {
+            cursor: pointer;
+            border: none;
+            width: auto;
+        }
+
+        /* Rodapé */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .main-footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        /* Responsividade (exemplo) */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 20px;
+                cursor: pointer;
+            }
+            .mobile-menu-toggle span {
+                height: 3px;
+                width: 100%;
+                background-color: var(--primary-color);
+                border-radius: 5px;
+            }
+            .about-summary-section .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* CSS para o botão flutuante do WhatsApp */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-button img {
+            width: 60px; /* Ajuste o tamanho do ícone aqui */
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#inicio" class="logo">
+                <img src="https://via.placeholder.com/150x40.png?text=LOGO" alt="Logo Gustavo Colombo Consultoria">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#cases">Cases</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="https://wa.me/554891086346" class="cta-button" target="_blank">Agendar Consultoria</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section" style="background-image: url('https://images.unsplash.com/photo-1549419163-146313b0a2c4?q=80&w=2940&auto=format&fit=crop');">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Gestão em Saúde que Transforma Resultados.</h1>
+                    <p>Consultoria estratégica para clínicas, hospitais e operadoras de saúde que buscam eficiência e crescimento sustentável.</p>
+                    <a href="https://wa.me/554891086346" class="cta-button" target="_blank">Agende uma Análise Gratuita</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="about-summary-section">
+            <div class="container">
+                <div class="about-content">
+                    <img src="https://images.unsplash.com/photo-1622997931362-75d56b06e838?q=80&w=2564&auto=format&fit=crop" alt="Foto de Gustavo Colombo">
+                    <div class="text-content">
+                        <h2>Olá, sou Gustavo Colombo</h2>
+                        <p>Com mais de 15 anos de experiência em gestão hospitalar, meu propósito é ajudar gestores e instituições de saúde a alcançarem a excelência operacional e financeira. Minha abordagem é prática, focada em resultados tangíveis e na construção de um futuro sustentável para seu negócio. Já passei por grandes hospitais e sei que é possível otimizar cada processo para gerar mais valor e melhor atendimento.</p>
+                        <a href="#" class="link-saiba-mais">Saiba mais sobre minha trajetória &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="services-section">
+            <div class="container">
+                <h2>O que Oferecemos</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="https://www.svgrepo.com/show/365287/finance.svg" alt="Ícone de Gestão Financeira">
+                        <h3>Gestão Financeira Estratégica</h3>
+                        <p>Otimização de custos, análise de rentabilidade e planejamento orçamentário para garantir a saúde financeira da sua instituição.</p>
+                        <a href="#" class="link-saiba-mais">Saiba Mais</a>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://www.svgrepo.com/show/365289/optimization.svg" alt="Ícone de Otimização de Processos">
+                        <h3>Otimização de Processos</h3>
+                        <p>Aprimore a eficiência operacional e a experiência do paciente através da análise e melhoria de fluxos de trabalho inteligentes.</p>
+                        <a href="#" class="link-saiba-mais">Saiba Mais</a>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://www.svgrepo.com/show/365281/strategy.svg" alt="Ícone de Planejamento Estratégico">
+                        <h3>Planejamento Estratégico</h3>
+                        <p>Defina metas claras, desenvolva planos de ação robustos e garanta o crescimento sustentável a longo prazo para o seu negócio.</p>
+                        <a href="#" class="link-saiba-mais">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" class="cases-section">
+            <div class="container">
+                <h2>Resultados que Geram Impacto</h2>
+                <div class="case-card">
+                    <h3>Clínica Exemplo: Aumento de 25% na Eficiência Operacional</h3>
+                    <p>**Desafio:** A Clínica Exemplo enfrentava longas filas de espera e um alto índice de cancelamentos. A falta de um processo claro de agendamento e atendimento gerava insatisfação nos pacientes e perda de receita.</p>
+                    <p>**Solução:** Implementamos um mapeamento completo dos processos e um novo software de agendamento integrado. Treinamos a equipe para um fluxo de trabalho mais ágil, do check-in ao checkout.</p>
+                    <p>**Resultado:** Em 6 meses, a Clínica Exemplo reduziu o tempo de espera em 40%, diminuindo cancelamentos e aumentando a capacidade de atendimento em 25%.</p>
+                </div>
+                <div class="case-card">
+                    <h3>Hospital Modelo: Redução de 15% nos Custos Fixos</h3>
+                    <p>**Desafio:** O Hospital Modelo, uma instituição de médio porte, lutava com custos operacionais elevados, especialmente em áreas como compras de suprimentos e manutenção.</p>
+                    <p>**Solução:** Realizamos uma auditoria completa de gastos, renegociamos contratos com fornecedores e introduzimos um sistema de controle de estoque mais eficiente.</p>
+                    <p>**Resultado:** O Hospital Modelo obteve uma economia de 15% em custos fixos anuais, liberando capital para investir em novas tecnologias e melhorias estruturais.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <h2>O que nossos clientes dizem</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial-card">
+                        <p>"A consultoria do Gustavo foi essencial para reorganizar nosso fluxo financeiro. Vimos uma melhora significativa em apenas 3 meses."</p>
+                        <cite>— João da Silva, Diretor da Clínica Exemplo</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Ele nos ajudou a identificar gargalos e otimizar nosso atendimento, resultando em um aumento de 20% na satisfação dos pacientes."</p>
+                        <cite>— Maria Rodrigues, Gerente do Hospital Modelo</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <h2>Artigos Recentes</h2>
+                <div class="blog-grid">
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2672&auto=format&fit=crop" alt="Imagem de um gráfico de crescimento">
+                        <h3>Os 5 Pilares da Gestão Hospitalar de Sucesso</h3>
+                        <p>Uma gestão de excelência se sustenta em pilares sólidos: financeiro, operacional, de pessoas, tecnológico e de qualidade. Entenda como cada um deles impacta diretamente o crescimento e a eficiência da sua instituição.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1549241520-4351000632a8?q=80&w=2672&auto=format&fit=crop" alt="Imagem de um laptop com dados">
+                        <h3>Como a Análise de Dados Melhora a Tomada de Decisão na Saúde</h3>
+                        <p>O Big Data na saúde não é apenas uma tendência, é uma necessidade. Utilizar dados para otimizar agendamentos, prever demandas e personalizar tratamentos são apenas algumas das vantagens. Descubra como aplicar essa estratégia.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1574360980459-40e115049c66?q=80&w=2670&auto=format&fit=crop" alt="Imagem de duas pessoas em uma reunião">
+                        <h3>Planejamento Financeiro para Clínicas: Passo a Passo</h3>
+                        <p>Um guia completo para você controlar seu fluxo de caixa, reduzir despesas e aumentar a lucratividade sem comprometer a qualidade.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1588701967204-c5a709289299?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma pessoa em um consultório">
+                        <h3>A Importância da Experiência do Paciente na Gestão Moderna</h3>
+                        <p>Mais do que procedimentos, o paciente busca uma experiência completa. Saiba como aprimorar a jornada do paciente, desde o primeiro contato até o pós-consulta, e transforme a satisfação em fidelização.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1629815413348-132d75fdf8b1?q=80&w=2670&auto=format&fit=crop" alt="Imagem de gestão de riscos">
+                        <h3>Gestão de Riscos na Saúde: Como se Proteger de Imprevistos</h3>
+                        <p>Entenda a importância de identificar, avaliar e mitigar riscos em sua instituição para garantir a segurança dos pacientes e a sustentabilidade do negócio.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1579684385108-a461e1a5f643?q=80&w=2670&auto=format&fit=crop" alt="Imagem de telemedicina">
+                        <h3>Telemedicina: A Revolução Digital no Atendimento</h3>
+                        <p>Explore as vantagens e desafios da telemedicina e como essa tecnologia pode expandir o alcance da sua clínica, otimizar o tempo e melhorar a conveniência para os pacientes.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582297120790-2c7009c73367?q=80&w=2670&auto=format&fit=crop" alt="Imagem de equipe colaborando">
+                        <h3>Liderança na Saúde: Formando Equipes de Alta Performance</h3>
+                        <p>Aprenda as melhores práticas para liderar equipes multidisciplinares, motivar talentos e criar um ambiente de trabalho colaborativo e produtivo em sua instituição de saúde.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de prontuários médicos">
+                        <h3>Prontuários Eletrônicos: O Fim do Papel na Gestão</h3>
+                        <p>Descubra como a digitalização de prontuários pode otimizar o fluxo de informações, aumentar a segurança dos dados e reduzir custos operacionais de sua clínica ou hospital.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de sala de cirurgia">
+                        <h3>Gestão de Centro Cirúrgico: Maximizando a Eficiência</h3>
+                        <p>Conheça as estratégias para otimizar o uso das salas de cirurgia, reduzir o tempo de espera e aumentar a produtividade sem comprometer a segurança e a qualidade do atendimento.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma reunião de equipe">
+                        <h3>O Papel da Cultura Organizacional na Qualidade do Atendimento</h3>
+                        <p>A cultura de uma instituição de saúde é o reflexo de seus valores. Entenda como construir uma cultura focada na qualidade, empatia e segurança que se traduz em um atendimento de excelência.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1621252601249-16a70a049495?q=80&w=2670&auto=format&fit=crop" alt="Imagem de um médico interagindo com paciente">
+                        <h3>Marketing Digital para Clínicas: Estratégias que Geram Pacientes</h3>
+                        <p>Aprenda a atrair e reter pacientes através de estratégias de marketing digital, como SEO, mídias sociais e campanhas de e-mail, de forma ética e profissional.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1599878143419-798836512686?q=80&w=2670&auto=format&fit=crop" alt="Imagem de tecnologia médica">
+                        <h3>Inovação na Saúde: Adaptando sua Instituição para o Futuro</h3>
+                        <p>Não basta acompanhar a tecnologia, é preciso estar à frente. Conheça as principais inovações em equipamentos, processos e serviços que podem diferenciar sua instituição no mercado.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1581092495790-2c7009c73367?q=80&w=2670&auto=format&fit=crop" alt="Imagem de um profissional de saúde">
+                        <h3>Retenção de Talentos na Saúde: Por que e Como Fazer</h3>
+                        <p>O turnover de profissionais de saúde é um desafio. Descubra estratégias eficazes para reter talentos, investir em capacitação e construir uma equipe forte e comprometida a longo prazo.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de um hospital">
+                        <h3>Gestão de Qualidade em Saúde: O Caminho para a Excelência</h3>
+                        <p>Implementar um sistema de gestão de qualidade não é um custo, mas um investimento. Saiba como certificações e protocolos de segurança podem elevar o padrão de atendimento e a credibilidade da sua instituição.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582297120790-2c7009c73367?q=80&w=2670&auto=format&fit=crop" alt="Imagem de um painel de indicadores">
+                        <h3>Indicadores de Desempenho (KPIs) Essenciais na Gestão Hospitalar</h3>
+                        <p>O que não é medido não pode ser gerenciado. Conheça os principais KPIs que todo gestor de saúde deve monitorar para avaliar o desempenho financeiro, operacional e de qualidade.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>O Futuro da Saúde: Tecnologia e Humanização Caminhando Juntas</h3>
+                        <p>Discuta como a tecnologia, como IA e robótica, pode ser integrada aos cuidados de saúde para melhorar a eficiência sem perder o toque humano e a empatia.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582297120790-2c7009c73367?q=80&w=2670&auto=format&fit=crop" alt="Imagem de um painel de indicadores">
+                        <h3>Gestão de Estoque em Clínicas: Como Evitar Perdas e Desperdícios</h3>
+                        <p>Um estoque bem gerenciado é crucial para a saúde financeira. Aprenda a otimizar a compra e o controle de insumos para evitar a falta ou o excesso de produtos.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>O Papel do Compliance na Gestão de Saúde</h3>
+                        <p>A conformidade com regulamentações e normas éticas é fundamental. Entenda a importância do compliance para a reputação e a segurança jurídica de sua instituição.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>Como Otimizar a Produtividade da Equipe na Área da Saúde</h3>
+                        <p>A produtividade não é apenas sobre fazer mais, mas fazer melhor. Conheça técnicas de gestão de tempo e recursos para otimizar o desempenho da sua equipe.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>A Revolução da IA na Gestão de Saúde</h3>
+                        <p>A inteligência artificial está transformando diagnósticos, otimizando o fluxo de trabalho e personalizando o atendimento. Explore como a IA pode ser um diferencial competitivo para sua clínica ou hospital.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>Gestão de Crises em Hospitais: O Plano de Ação Essencial</h3>
+                        <p>Prepare sua equipe para lidar com situações de crise, desde surtos de doenças até problemas de reputação, com um plano de comunicação e ação robusto e eficaz.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>O Impacto do Design de Serviço na Experiência do Paciente</h3>
+                        <p>O design de serviço foca em otimizar cada ponto de contato com o paciente, desde o ambiente físico até a interação com a equipe. Saiba como essa abordagem pode melhorar a percepção de valor.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto=format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>Estratégias de Comunicação para Gestores de Saúde</h3>
+                        <p>Uma comunicação clara e eficaz é vital. Aprenda a se comunicar com sua equipe, pacientes e stakeholders para construir confiança e alinhar todos aos objetivos da instituição.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto-format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>Sustentabilidade em Hospitais: Além da Economia, um Diferencial Competitivo</h3>
+                        <p>Entenda como a implementação de práticas sustentáveis, como redução de resíduos e eficiência energética, não apenas economiza recursos, mas também melhora a imagem e a reputação da sua instituição.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                    <article class="blog-post-card">
+                        <img src="https://images.unsplash.com/photo-1582751480088-e9f0d1a499b7?q=80&w=2670&auto-format&fit=crop" alt="Imagem de uma enfermeira com tablet">
+                        <h3>Otimização de Receitas: Maximizando o Faturamento sem Perder Qualidade</h3>
+                        <p>Descubra como a gestão de convênios, a auditoria de contas e a otimização de serviços podem aumentar o faturamento da sua clínica de forma sustentável e ética.</p>
+                        <a href="#" class="link-saiba-mais">Leia mais</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <a href="https://wa.me/554891086346" class="whatsapp-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Fale conosco pelo WhatsApp">
+        </a>
+    </main>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Consultoria Gustavo Colombo. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
